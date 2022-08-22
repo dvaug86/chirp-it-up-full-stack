@@ -4,3 +4,6 @@ node_modules/
 # production bundles
 dist/
 public/js/app.js
+
+#this is to hide passwords and the likes on github
+.env 
