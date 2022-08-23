@@ -1,6 +1,6 @@
 //this is the endpoint file for the particular resource in this chirpr application
 import * as express from 'express';
-
+import db from '../../db';
 const router = express.Router();
 
 
@@ -18,8 +18,10 @@ router.get('/:chirprid', async (req, res) => {
 //this is our first endpoint of our crud operations while not first in order this is best to do first
 //writting out to scaffold since it is simple and we can make sure it it works before scafffolding out
 router.get('/', async (req, res) => {
+    let chirps = await db.chirpr.all();
     try{
-        res.json({msg: 'all chirps' });
+        
+        res.json({msg: 'all chirps', chirps});
     } catch (error){
         console.log(error);
         res.status(500).json({msg: 'code is bunk', error: error.message})

@@ -1,5 +1,5 @@
 import * as express from 'express';
-import chirprRouter from  './chirpr';
+import chirprRouter from  './chirprRoutes';
 
 const router = express.Router();
 
