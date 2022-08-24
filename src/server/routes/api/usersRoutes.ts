@@ -8,8 +8,6 @@ router.get('/:userid', async (req, res) => {
     try {
         const userdetails = await db.users.one(userid);
         res.json(userdetails);
-        //we could do  res.json(useretails[0]); to get the individaul object 
-        //since that would select the first object in the array
     } catch (error) {
         console.log(error);
         res.status(500).json({ msg: 'code is bunk', error: error.message })

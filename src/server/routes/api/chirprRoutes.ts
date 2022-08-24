@@ -25,10 +25,8 @@ router.get('/:chirprid', async (req, res) => {
 //writting out to scaffold since it is simple and we can make sure it it works before scafffolding out
 router.get('/', async (req, res) => {
     let allChirps = await db.chirps.all();
-    res.json(allChirps);
     try {
-
-        res.json({ msg: 'all chirps', allChirps });
+        res.json(allChirps);
     } catch (error) {
         console.log(error);
         res.status(500).json({ msg: 'code is bunk', error: error.message })
