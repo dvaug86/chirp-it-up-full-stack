@@ -2,7 +2,8 @@
 import * as mysql from 'mysql';
 import  config from '../config';
 
-import chirpr from './queries/chirps';
+import chirps from './queries/chirps';
+import users from './queries/users';
 
 //establishing a connection between node and database
 const dbconnect = mysql.createConnection(config.mysql);
@@ -21,5 +22,6 @@ export const Query = (query: string, values?: any) =>{
 
 
 export default{
-    chirpr
+    chirps,
+    users
 }
