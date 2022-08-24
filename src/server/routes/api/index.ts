@@ -7,3 +7,4 @@ const router = express.Router();
 router.use('/chirps', chirprRouter); //the '/chirps' is for the address so that is localhost:3000/api/chirps
 router.use('/users', usersRouter);
 export default router; 
+

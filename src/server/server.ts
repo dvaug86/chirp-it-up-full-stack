@@ -2,10 +2,13 @@ import * as express from 'express';
 import * as path from 'path';
 import * as morgan from 'morgan';
 import routes from './routes';
+import config from './config';
 
 const app = express();
+
 const router = express.Router();
 router.get('/status', (req, res) => res.sendStatus(200));
+
 app.use(morgan('dev'));
 app.use(express.static('public'));
 app.use(express.json()); //body parser needs to be above routes
