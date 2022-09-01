@@ -4,13 +4,13 @@ import db from '../../db';
 const router = express.Router();
 
 
-router.get('/:chirprid', async (req, res) => {
+router.get('/:id', async (req, res) => {
     
-    //chirprid will always be a string even though we want it to be a number in this project
-    //therrfore we cast req.params.chirprid as a number as shown below
-    const chirprid = Number(req.params.chirprid);
+    //id will always be a string even though we want it to be a number in this project
+    //therrfore we cast req.params.id as a number as shown below
+    const id:any = (req.params.id);
     try {
-        const chirpDetails = await db.chirps.one(chirprid);
+        const chirpDetails = await db.chirps.one(id);
         res.json(chirpDetails);
         //we can do the chirpDetails[0] here so that we are selecting the first item in array which is all we are looking for
         //this way we don't have an array of oject later  
@@ -44,11 +44,11 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:chirprid', async (req, res) => {
-    const chirprid = Number(req.params.chirprid);
+router.put('/:id', async (req, res) => {
+    const id = Number(req.params.id);
     const editedChirp = req.body;
     try {
-        const result = await db.chirps.update(editedChirp, chirprid);
+        const result = await db.chirps.update(editedChirp, id);
         res.json(result);
     } catch (error) {
         console.log(error);
@@ -56,10 +56,10 @@ router.put('/:chirprid', async (req, res) => {
     }
 });
 
-router.delete('/:chirprid', async (req, res) => {
-    const chirprid = Number(req.params.chirprid);
+router.delete('/:id', async (req, res) => {
+    const id = Number(req.params.id);
     try {
-        const result = await db.chirps.obliterate(chirprid);
+        const result = await db.chirps.obliterate(id);
         res.json(result);
     } catch (error) {
         console.log(error);
